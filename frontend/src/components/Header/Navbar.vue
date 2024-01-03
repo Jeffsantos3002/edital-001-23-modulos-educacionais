@@ -11,15 +11,21 @@
       <router-link to="/transparencia" class="text-xl font-semibold">Transparência</router-link>
       <router-link to="/contato" class="text-xl font-semibold">Contato</router-link>
     </div>
-    <div class="w-353 h-10 flex items-center rounded-2xl border-2 border-solid border-opacity-20 border-gray py-2.5 px-5">
-      <v-icon class="search-icon ">mdi-magnify</v-icon>
-
-      <input
-        type="search"
-        v-model="search"
-        class="form-control w-full placeholder-placeholderColor"
-        placeholder="Busca por um assunto..."
-      />
+    <div class="flex flex-row">
+      <div class="w-353 h-10 flex space-x-2.5 items-center rounded-2xl border-2 border-solid border-opacity-20 border-gray py-2.5 px-5">
+        <v-icon class="search-icon ">mdi-magnify</v-icon>
+        <input
+          type="search"
+          v-model="search"
+          class="form-control w-full placeholder-placeholderColor focus:outline-none"
+          placeholder="Busca por um assunto..."
+        />
+      </div>
+      <div>
+        <v-btn>
+          Entrar
+        </v-btn>
+      </div>
     </div>
   </div>
 </template>
