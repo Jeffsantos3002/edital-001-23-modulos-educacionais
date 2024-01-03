@@ -6,17 +6,17 @@ export default {
       'md': '960px'
     },
     colors:{
-      'greenFanese': '#28DC55',
-      'roxo': '#6F51D6',
-      'roxoEscuro': '#6951BF',
       'footer': '#292D32',
-      'gray': '#666666'
+      'gray': '#707070',
+      'placeholderColor': '#545454'
     },
     fontFamily: {
-      roboto: ['Roboto', 'sans-serif'],
-      leagueEspartan: ['League Spartan', 'sans-serif']
+      nunito: ['Nunito', 'sans-serif']
     },
     extend: {
+      spacing: {
+        '353': '22rem',
+      }
     }
   },
   plugins: []

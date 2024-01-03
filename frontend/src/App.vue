@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="font-nunito">
     <!-- eslint-disable-next-line no-unused-vars -->
     <!-- importa o layout do site -->
     <Layout/>

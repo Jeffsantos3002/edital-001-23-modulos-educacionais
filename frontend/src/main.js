@@ -3,7 +3,6 @@ import App from './App.vue'
 import router from './router'
 import './styles/main.css'
 
-// Calendário
 // Vuetify
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
