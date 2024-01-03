@@ -1,12 +1,12 @@
 <!-- Layout do site -->
 <template>
-  <v-card class="elevation-0">
+  <v-card class="">
     <v-layout class="flex flex-col">
       <!-- navbar -->
         <HeaderAva/>
       <!-- conteúdo da página -->
       <v-main class="flex justify-center">
-        <router-view class=" z-10 realtive"/>
+        <router-view/>
       </v-main>
       <FooterFanese/>
     </v-layout>
@@ -19,7 +19,5 @@ import FooterFanese from '@/components/FooterFanese.vue'
 </script>
 
 <style>
-.v-app-bar.v-toolbar:not(.v-toolbar--flat){
-  box-shadow:none !important;
-}
+
 </style>
