@@ -1,7 +1,7 @@
 <template>
-  <div class="flex items-center h-24 w-full space-x-4 justify-between py-7 2xl:px-32 pl-12 pr-5">
+  <div class="flex items-center h-24 w-full space-x-4 justify-between py-7 2xl:px-32 pl-6 pr-5">
     <div class="flex space-x-4 lg:space-x-0 items-center">
-      <img src="@/assets/logo.svg" class="mr-12 2xl:mr-20" />
+      <img src="@/assets/logo.svg" class=" mr-5 2xl:mr-20" />
       <div class="flex flex-row lg:flex hidden 2xl:space-x-9 space-x-4">
         <router-link to="/" class="text-gray text-xl font-semibold">Inicio</router-link>
         <router-link to="/sobre" class="text-xl font-semibold">Sobre nós</router-link>
