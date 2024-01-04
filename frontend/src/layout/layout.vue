@@ -8,14 +8,14 @@
       <v-main class="flex justify-center">
         <router-view/>
       </v-main>
-      <FooterFanese/>
+      <FooterAva/>
     </v-layout>
   </v-card>
 </template>
 
 <script setup>
 import HeaderAva from '@/components/Header/HeaderAva.vue'
-import FooterFanese from '@/components/FooterFanese.vue'
+import FooterAva from '@/components/FooterAva.vue'
 </script>
 
 <style>

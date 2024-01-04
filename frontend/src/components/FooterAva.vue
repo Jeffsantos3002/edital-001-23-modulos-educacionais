@@ -16,7 +16,7 @@
             <p class="text-white text-base font-normal">Tecnológica em Saúde. </p>
           </div>
         </div>
-        <div class="flex flex-row space-x-20 lg:space-x-56">
+        <div class="flex flex-row space-x-20 md:space-x-48 lg:space-x-56">
           <div class="md:space-y-3.5">
             <h1 class="text-[26px] text-white">Links úteis</h1>
             <div class="flex flex-col">
@@ -40,7 +40,7 @@
       </div>
     </div>
     <div class="bg-footer-gray h-20 flex items-center justify-center">
-      <p class="text-lg font-thin text-white">2022 © LAIS (HUOL). Todos os direitos reservados</p>
+      <p class="text-lg font-thin text-white text-center">2022 © LAIS (HUOL). Todos os direitos reservados</p>
     </div>
   </div>
 </template>
