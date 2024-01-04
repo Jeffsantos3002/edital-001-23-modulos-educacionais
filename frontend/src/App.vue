@@ -1,5 +1,5 @@
 <template>
-  <div class="font-nunito">
+  <div class="font-montserrat">
     <!-- eslint-disable-next-line no-unused-vars -->
     <!-- importa o layout do site -->
     <Layout/>
