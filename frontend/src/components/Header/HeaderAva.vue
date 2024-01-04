@@ -20,10 +20,8 @@
           <v-list-item class="w-full text-center">
               Entrar
           </v-list-item>
-          <v-list-item>
-            <v-btn class="rounded-2xl w-full h-full text-xl normal-case text-white bg-gray py-2  pr-5">
-              Cadastrar
-            </v-btn>
+          <v-list-item class="w-full flex justify-center items-center">
+            <buttonAva mensagem="Cadastrar"/>
           </v-list-item>
         </v-list>
       </v-navigation-drawer>
@@ -32,6 +30,7 @@
 <script setup>
 import { ref } from 'vue'
 import Navbar from './Navbar.vue'
+import buttonAva from '../buttonAva.vue'
 
 const drawer = ref(null)
 </script>

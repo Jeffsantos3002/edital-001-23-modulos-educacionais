@@ -11,7 +11,7 @@
         <router-link to="/contato" class="text-xl font-semibold">Contato</router-link>
       </div>
     </div>
-    <div class="flex flex-row h-full space-x-4 justify-end">
+    <div class="flex flex-row space-x-4 items-center justify-end">
       <div class="w-64 2xl:w-353 h-10 flex space-x-2.5 items-center rounded-2xl border-2 border-solid border-opacity-20 border-gray py-2.5 px-5">
         <v-icon class="search-icon ">mdi-magnify</v-icon>
         <input
@@ -22,12 +22,10 @@
         />
       </div>
       <div class="space-x-4 flex justify-end hidden xl:flex">
-        <v-btn class="rounded-2xl h-full text-xl normal-case border border-solid border-gray-950 px-5">
+        <v-btn class="rounded-2xl text-xl normal-case border border-solid border-gray-950 px-5">
           Entrar
         </v-btn>
-        <v-btn class="rounded-2xl h-full text-xl normal-case text-white bg-gray px-5 xl:px-9">
-          Cadastrar
-        </v-btn>
+        <buttonAva mensagem="Cadastrar"/>
       </div>
     </div>
   </div>
@@ -35,5 +33,7 @@
 
 <script setup>
 import { ref } from 'vue'
+import buttonAva from '../buttonAva.vue'
+
 const search = ref('')
 </script>
