@@ -1,5 +1,5 @@
 <template>
-  <section class="py-10">
+  <section class="">
     <h1>Construindo...</h1>
     <Parceiros/>
   </section>

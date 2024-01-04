@@ -3,6 +3,9 @@ export default {
   important: true,
   content: ['./index.html', './src/**/*.{vue,js,ts,jsx,tsx}'],
   theme: {
+    borderRadius:{
+      'card': '20px',
+    },
     screens:{
       'md': '960px',
       'lg': '1288px',
@@ -15,6 +18,7 @@ export default {
       'footer-gray': '#424146',
       'gray': '#707070',
       'placeholderColor': '#545454',
+      'gray-container': '#F5F5F7',
 
     },
     fontFamily: {
