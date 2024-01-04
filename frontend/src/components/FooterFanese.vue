@@ -1,28 +1,46 @@
 <template>
-  <div class="bg-footer flex flex-col py-5">
-    <div class="w-full absolute">
-      <ul class="flex flex-row space-x-2 justify-end px-5 md:px-10">
-        <!-- <li><a href="https://pt-br.facebook.com/FaneseSergipe" target="_blank"><img src="@/assets/social/facebook-gray.svg" alt="facebook" class="w-4"></a></li>
-        <li><a href="https://twitter.com/faneseoficial" target="_blank"><img src="@/assets/social/twitter-gray.svg" alt="twitter" class="w-4"></a></li>
-        <li><a href="https://www.youtube.com/fanesesergipe" target="_blank"><img src="@/assets/social/youtube-gray.svg" alt="youtube" class="w-4"></a></li>
-        <li><a href="https://www.instagram.com/fanese_sergipe/" target="_blank"><img src="@/assets/social/instagram-gray.svg" alt="instagram" class="w-4"></a></li>
-        <li><a href="https://www.linkedin.com/school/fanese/" target="_blank"><img src="@/assets/social/linkedin-gray.svg" alt="linkedin" class="w-4"></a></li> -->
-      </ul>
-    </div>
-    <div class="h-20 flex flex-col-reverse md:flex-row items-center py-5 md:px-16 md:justify-start space-x-24">
-      <div class="flex flex-col items-center justify-center w-full ">
-        <!-- <img src="@/assets/Fanese-gray.png" alt="logo-fanese" class="w-28"> -->
-        <p class="font-thin text-gray text-xs upercase">Faculdade de Administração e Negócios de Sergipe</p>
+  <div class="h-644">
+    <div class="bg-footer-red flex flex-col justify-center items-center h-56 space-y-8 md:space-y-11 py-20">
+      <h2 class="text-white text-2xl">Realização</h2>
+      <div class="flex flex-col md:flex-row md:space-x-20">
+        <img src="@/assets/footer/logo_lais.svg" class="h-16 md:h-20 w-60"/>
+        <img src="@/assets/footer/logo_ufrn.svg" class="h-16 md:h-20 w-56"/>
       </div>
     </div>
-    <div class="flex flex-col md:flex-row items-center md:items-end w-full md:justify-between px-10 space-y-2">
-      <a href="https://maps.app.goo.gl/XioFy1dzz2BMAbWj7" target="_blank" class="md:w-1/2 flex w-80 space-x-2 mt-2 md:mt-0">
-        <!-- <img src="@/assets/localizacao.svg" alt="localização" class="w-4"> -->
-        <p class=" text-gray font-thin text-xs upercase">Travessa Sargento Duque, 85- Bairro Industrial</p>
-      </a>
-      <div class="md:w-1/2 flex md:justify-end">
-        <p class="text-gray font-thin text-xs text-center">© Copyright 2021 Fanese - Todos os Direitos Reservados.</p>
+    <div class="bg-footer-black h-96 md:h-80 flex justify-center">
+      <div class="flex flex-col md:flex-row md:space-x-48 lg:space-x-56 py-8 md:py-16 space-y-8 md:space-y-0">
+        <div class="space-y-2.5 flex flex-col items-center">
+          <img src="@/assets/footer/logo_lais.svg" alt="logo-lais" title="logo-lais" class="h-9 w-32">
+          <div>
+            <p class="text-white text-base font-normal">Laboratório de Inovação </p>
+            <p class="text-white text-base font-normal">Tecnológica em Saúde. </p>
+          </div>
+        </div>
+        <div class="flex flex-row space-x-20 lg:space-x-56">
+          <div class="md:space-y-3.5">
+            <h1 class="text-[26px] text-white">Links úteis</h1>
+            <div class="flex flex-col">
+              <router-link to="/" class="text-lg font-thin text-white">Inicio</router-link>
+              <router-link to="/sobre" class="text-lg font-normal text-white">Sobre nós</router-link>
+              <router-link to="/cursos" class="text-lg font-normal text-white"> Cursos</router-link>
+              <router-link to="/parceiros" class="text-lg font-normal text-white">Parceiros</router-link>
+              <router-link to="/transparencia" class="text-lg font-normal text-white">Transparência</router-link>
+              <router-link to="/contato" class="text-lg font-normal text-white">Contato</router-link>
+            </div>
+          </div>
+          <div>
+            <h1 class="text-[26px] text-white">Redes sociais</h1>
+            <div class="flex flex-row space-x-12">
+              <img src="@/assets/footer/facebook_icon.svg" alt="facebook-icon" title="facebook">
+              <img src="@/assets/footer/twitter_icon.svg" alt="twitter-icon" title="twitter">
+              <img src="@/assets/footer/instagram_icon.svg" alt="instagram-icon" title="instagram">
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
+    <div class="bg-footer-gray h-20 flex items-center justify-center">
+      <p class="text-lg font-thin text-white">2022 © LAIS (HUOL). Todos os direitos reservados</p>
     </div>
   </div>
 </template>

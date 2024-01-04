@@ -22,10 +22,10 @@
         />
       </div>
       <div class="space-x-4 flex justify-end hidden xl:flex">
-        <v-btn class="rounded-2xl h-full text-xl normal-case border border-solid border-gray-950 py-2 px-5">
+        <v-btn class="rounded-2xl h-full text-xl normal-case border border-solid border-gray-950 px-5">
           Entrar
         </v-btn>
-        <v-btn class="rounded-2xl h-full text-xl normal-case text-white bg-gray py-2 px-5 xl:px-9">
+        <v-btn class="rounded-2xl h-full text-xl normal-case text-white bg-gray px-5 xl:px-9">
           Cadastrar
         </v-btn>
       </div>
