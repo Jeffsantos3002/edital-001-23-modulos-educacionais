@@ -24,7 +24,7 @@ export default {
       fontWeight: ['hover', 'focus'],
       spacing: {
         '353': '22rem',
-        '644': '40rem',
+        '644': '44rem',
       }
     }
   },
