@@ -1,5 +1,5 @@
 <template>
-  <div class="h-644">
+  <div class="h-full">
     <div class="bg-footer-red flex flex-col justify-center items-center h-56 space-y-8 md:space-y-11 py-20">
       <h2 class="text-white text-2xl">Realização</h2>
       <div class="flex flex-col md:flex-row md:space-x-20">
@@ -7,7 +7,7 @@
         <img src="@/assets/footer/logo_ufrn.svg" class="h-16 md:h-20 w-56"/>
       </div>
     </div>
-    <div class="bg-footer-black h-96 md:h-80 flex justify-center">
+    <div class="bg-footer-black h-full md:h-80 flex justify-center">
       <div class="flex flex-col md:flex-row md:space-x-48 lg:space-x-56 py-8 md:py-16 space-y-8 md:space-y-0">
         <div class="space-y-2.5 flex flex-col items-center">
           <img src="@/assets/footer/logo_lais.svg" alt="logo-lais" title="logo-lais" class="h-9 w-32">
@@ -16,8 +16,8 @@
             <p class="text-white text-base font-normal">Tecnológica em Saúde. </p>
           </div>
         </div>
-        <div class="flex flex-row space-x-20 md:space-x-48 lg:space-x-56">
-          <div class="md:space-y-3.5">
+        <div class="flex flex-row space-x-10 md:space-x-48 lg:space-x-56">
+          <div class="pl-2 md:space-y-3.5">
             <h1 class="text-[26px] text-white">Links úteis</h1>
             <div class="flex flex-col">
               <router-link to="/" class="text-lg font-thin text-white">Inicio</router-link>
@@ -30,7 +30,7 @@
           </div>
           <div>
             <h1 class="text-[26px] text-white">Redes sociais</h1>
-            <div class="flex flex-row space-x-12">
+            <div class="flex flex-row space-x-2 sm:space-x-12">
               <img src="@/assets/footer/facebook_icon.svg" alt="facebook-icon" title="facebook">
               <img src="@/assets/footer/twitter_icon.svg" alt="twitter-icon" title="twitter">
               <img src="@/assets/footer/instagram_icon.svg" alt="instagram-icon" title="instagram">
