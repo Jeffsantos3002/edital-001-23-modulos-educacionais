@@ -1,6 +1,6 @@
 <template>
   <div class="h-full">
-    <div class="bg-footer-red flex flex-col justify-center items-center h-56 space-y-8 md:space-y-11 py-20">
+    <div class="bg-redAva flex flex-col justify-center items-center h-56 space-y-8 md:space-y-11 py-20">
       <h2 class="text-white text-2xl">Realização</h2>
       <div class="flex flex-col md:flex-row md:space-x-20">
         <img src="@/assets/footer/logo_lais.svg" class="h-16 md:h-20 w-60"/>

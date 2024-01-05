@@ -1,6 +1,6 @@
 <template>
   <section class="mb-32 px-10 flex flex-col items-center justify-center space-y-7">
-    <h1 class="text-3xl text-footer-red font-semibold">Pareceiros</h1>
+    <h1 class="text-3xl text-redAva font-semibold">Pareceiros</h1>
     <Card>
       <div class="px-8 flex flex-wrap md:flex-row justify-center space-x-2 md:space-x-8 ">
         <div class="w-60 flex flex-col items-center py-7">

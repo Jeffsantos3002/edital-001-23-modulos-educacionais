@@ -15,7 +15,7 @@ export default {
     },
     colors:{
       'footer-black': '#323237',
-      'footer-red': '#D2202C',
+      'redAva': '#D2202C',
       'footer-gray': '#424146',
       'gray': '#707070',
       'placeholderColor': '#545454',
