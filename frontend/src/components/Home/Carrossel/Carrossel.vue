@@ -1,7 +1,5 @@
 <template>
   <v-carousel
-    height="756"
-    width=""
     show-arrows
     hide-delimiter-background
   >
@@ -36,14 +34,14 @@
       :key="i"
     >
       <v-sheet
-        :color="colors[i]"
+        :color="'#522D2D'"
         height="100%"
       >
         <div class="d-flex fill-height justify-center align-center">
           <!-- <div class="text-h2">
             {{ slide }} Slide
           </div> -->
-          <Slide/>
+          <Slide :imagemPath="slide.imagem" :content="slide.content"/>
         </div>
       </v-sheet>
     </v-carousel-item>
@@ -53,20 +51,11 @@
 <script setup>
 import Slide from './Slide.vue'
 
-const colors = [
-  'indigo',
-  'warning',
-  'pink darken-2',
-  'red lighten-1',
-  'deep-purple accent-4'
-]
-
 const slides = [
-  'First',
-  'Second',
-  'Third',
-  'Fourth',
-  'Fifth'
+  { imagem: 'slid1.png', alt: 'Descrição do Slide 1', content: ['avasusSlide.svg', 'Line.svg', 'textSlid.svg'] },
+  { imagem: 'slid2.png', alt: 'Descrição do Slide 2', content: '' },
+  { imagem: 'slid3.jpeg', alt: 'Descrição do Slide 3', content: '' }
+  // ... outros slides
 ]
 </script>
 
@@ -94,7 +83,7 @@ v-carousel__controls {
   background-color: white !important;
   width: 53px !important;
   height: 15px !important;
-  border-radius: 0px !important;
+  border-radius: 5px !important;
 }
 .v-window__controls{
  padding: 0px 56px 0px 56px !important;

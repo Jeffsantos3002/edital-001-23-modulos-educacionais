@@ -20,6 +20,7 @@ export default {
       'gray': '#707070',
       'placeholderColor': '#545454',
       'gray-container': '#F5F5F7',
+      'bgSlid': '#522D2D',
 
     },
     fontFamily: {
