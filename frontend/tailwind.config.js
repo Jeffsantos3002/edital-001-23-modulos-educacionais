@@ -7,6 +7,7 @@ export default {
       'card': '20px',
     },
     screens:{
+      'sm': '500px',
       'md': '960px',
       'lg': '1288px',
       'xl': '1480px',
@@ -29,6 +30,7 @@ export default {
       spacing: {
         '353': '22rem',
         '644': '44rem',
+        '71': '4.5rem',
       }
     }
   },

@@ -5,7 +5,7 @@
       <!-- navbar -->
         <HeaderAva/>
       <!-- conteúdo da página -->
-      <v-main class="flex justify-center">
+      <v-main class="flex justify-center flex-col">
         <router-view/>
       </v-main>
       <FooterAva/>
