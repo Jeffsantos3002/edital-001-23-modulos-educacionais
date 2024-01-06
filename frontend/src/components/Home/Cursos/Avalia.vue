@@ -4,16 +4,16 @@
       v-model="localRating"
       :readonly="true"
       half-increments
-      :color="'#D2202C'"
+      :color="'#F6303F'"
     ></v-rating>
-    <pre>{{novaString}} </pre>
+    <pre><p :class="props.estilo">{{ novaString }}</p></pre>
   </div>
 </template>
 
 <script setup>
 import { defineProps, ref } from 'vue' // recebe a imagem e content se houver do elemento pai para montar o slide
 
-const props = defineProps(['rating'])
+const props = defineProps(['rating', 'estilo'])
 const localRating = ref(props.rating)
 const novaString = ref(localRating.value.toString().replace('.', ','))
 

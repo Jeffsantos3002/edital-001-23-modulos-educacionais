@@ -4,6 +4,7 @@ import Sobre from '../views/Sobre.vue'
 import Contatos from '@/views/Contato.vue'
 import Cursos from '@/views/Cursos.vue'
 import Transparencia from '@/views/Transparencia.vue'
+import DetalheModulo from '@/views/DetalheModulo.vue'
 
 const routes = [
   {
@@ -30,6 +31,11 @@ const routes = [
     path: '/transparencia',
     name: 'transparencia',
     component: Transparencia
+  },
+  {
+    path: '/detalhe/:id',
+    name: 'moduloDetalhes',
+    component: DetalheModulo
   }
 ]
 

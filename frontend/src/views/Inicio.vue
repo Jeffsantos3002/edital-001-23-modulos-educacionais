@@ -1,13 +1,15 @@
 <template>
-  <section class="">
-    <Carrossel/>
-  </section>
-  <section class="flex justify-center">
-    <Modulos/>
-  </section>
-  <section>
-    <Parceiros/>
-  </section>
+  <div class="flex flex-col space-y-28">
+    <section class="">
+      <Carrossel/>
+    </section>
+    <section class="flex justify-center px-4">
+      <Modulos/>
+    </section>
+    <section>
+      <Parceiros/>
+    </section>
+  </div>
 </template>
 
 <script setup>
