@@ -1,6 +1,7 @@
 // ModuloDetalhes.vue
 <template>
   <div>
+    <Breadcrumb/>
     <h1>{{ modulo.titulo }}</h1>
   </div>
 </template>
@@ -10,6 +11,7 @@ import { ref, onMounted } from 'vue'
 import { useRoute } from 'vue-router'
 
 import axios from 'axios'
+import Breadcrumb from '@/components/Breadcrumb.vue'
 
 const modulo = ref('')
 

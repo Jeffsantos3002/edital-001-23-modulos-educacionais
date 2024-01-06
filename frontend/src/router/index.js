@@ -5,6 +5,7 @@ import Contatos from '@/views/Contato.vue'
 import Cursos from '@/views/Cursos.vue'
 import Transparencia from '@/views/Transparencia.vue'
 import DetalheModulo from '@/views/DetalheModulo.vue'
+import Parceiros from '@/views/Parceiros.vue'
 
 const routes = [
   {
@@ -33,9 +34,14 @@ const routes = [
     component: Transparencia
   },
   {
-    path: '/detalhe/:id',
+    path: '/detalhe/:id/:titulo',
     name: 'moduloDetalhes',
     component: DetalheModulo
+  },
+  {
+    path: '/parceiros',
+    name: 'parceiros',
+    component: Parceiros
   }
 ]
 

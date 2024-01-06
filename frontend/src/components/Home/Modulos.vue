@@ -25,11 +25,11 @@
               <div class="flex flex-col md:flex-row items-center justify-center space-x-5 ">
                 <img :src="modulo.capa" :alt="modulo.titulo" :title="modulo.titulo" class="w-32 h-32 rounded-card">
                 <div class="flex flex-col w-[274px] space-y-4">
-                  <h3 class="text-xl font-semibold md:text-center text-center">{{ modulo.titulo }}</h3>
+                  <h3 class="text-xl font-semibold">{{ modulo.titulo }}</h3>
                   <p class="text-xs text-redAva text-[#F6303F] font-semibold">{{ modulo.parceiros }}</p>
                 </div>
               </div>
-              <div class="flex flex-col sm:flex-row items-end lg:items-center space-x-5 py-5">
+              <div class="flex flex-col sm:flex-row sm:items-end lg:items-center justify-center space-x-5 py-5">
                 <div class="flex flex-col md:flex-row md:space-x-5">
                   <div class="pl-4 flex flex-row space-x-5">
                     <div class="flex flex-row items-center space-x-2">
@@ -43,7 +43,7 @@
                   </div>
                   <Avalia :rating="modulo.avaliacao" estilo="text-base"/>
                 </div>
-                <buttonAva mensagem="Ver mais" @click="redirecionarParaDetalhes(modulo.id)"/>
+                <buttonAva mensagem="Ver mais" @click="redirecionarParaDetalhes(modulo.id, modulo.titulo)"/>
               </div>
             </div>
           </Card>
@@ -68,8 +68,8 @@ const selectedTab = ref('populares') // aciona o sublinhado assim que a página 
 const selectTab = (tab) => { // lógica para subilinhar os filtros ao clicar
   selectedTab.value = tab
 }
-const redirecionarParaDetalhes = (moduloId) => {
-  router.push({ name: 'moduloDetalhes', params: { id: moduloId } })
+const redirecionarParaDetalhes = (moduloId, moduloTitulo) => {
+  router.push({ name: 'moduloDetalhes', params: { id: moduloId, titulo: moduloTitulo } })
 }
 async function carregarCursos () {
   try {
