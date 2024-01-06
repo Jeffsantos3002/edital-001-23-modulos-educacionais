@@ -15,5 +15,5 @@
 <script setup>
 import Parceiros from '@/components/Home/Parceiros.vue'
 import Carrossel from '@/components/Home/Carrossel/Carrossel.vue'
-import Modulos from '@/components/Home/Modulos.vue'
+import Modulos from '@/components/Home/ModulosSection.vue'
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div>
     <Breadcrumb/>
-    <h1>Construindo...</h1>
+    <h1>Construindo</h1>
   </div>
 </template>
 

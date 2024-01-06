@@ -18,7 +18,7 @@ const modulo = ref('')
 onMounted(async () => {
   const route = useRoute()
   const moduleId = route.params.id
-  const apiUrl = `http://192.168.1.95:3004/cursos/${moduleId}`
+  const apiUrl = `http://127.0.0.1:3004/cursos/${moduleId}`
   const response = await axios.get(apiUrl)
   modulo.value = response.data
 })

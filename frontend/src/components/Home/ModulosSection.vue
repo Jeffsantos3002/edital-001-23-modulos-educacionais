@@ -48,7 +48,7 @@
             </div>
           </Card>
         </div>
-        <buttonAva mensagem="Ver mais" class="w-80"/>
+        <router-link to="/modulos"><buttonAva mensagem="Ver mais" class="w-80"/></router-link>
       </div>
     </div>
 </template>
@@ -73,7 +73,7 @@ const redirecionarParaDetalhes = (moduloId, moduloTitulo) => {
 }
 async function carregarCursos () {
   try {
-    const apiUrl = `http://192.168.1.95:3004/cursos?cateroriacateroria=Módulo de extensão${categoria.value}`
+    const apiUrl = `http://127.0.0.1:3004/cursos?cateroriacateroria=Módulo de extensão${categoria.value}`
     const response = await axios.get(apiUrl)
     console.log(apiUrl)
     if (response.data) {
