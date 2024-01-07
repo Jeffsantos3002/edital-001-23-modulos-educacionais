@@ -9,7 +9,7 @@
         </div>
         <div class="mb-8 cursor-pointer pb-2"
           :class="{'filter': selectedTab === 'avaliados'}"
-          @click="mudarCategoria('&_limit=3&_sort=numero_avaliacoes&_order=desc','avaliados')">
+          @click="mudarCategoria('&_limit=3&_sort=avaliacao&_order=desc','avaliados')">
           <Title tamanho="text-xl" cor="text-black" texto="Mais bem avaliados"/>
         </div>
         <div class="mb-8 cursor-pointer pb-2"
@@ -23,7 +23,7 @@
           <Card v-for="modulo in responsed" :key="modulo.id">
             <div class="px-5 flex flex-col md:flex-row items-center md:space-x-5 py-5">
               <div class="flex flex-col md:flex-row items-center justify-center space-x-5 ">
-                <img :src="modulo.capa" :alt="modulo.titulo" :title="modulo.titulo" class="w-32 h-32 rounded-card">
+                <img :src="modulo.capa" :alt="modulo.titulo" :title="modulo.titulo" class="w-32 h-32 rounded-card" loading="lazy">
                 <div class="flex flex-col w-[274px] space-y-4">
                   <Title tamanho="text-xl" cor="text-black" :texto="modulo.titulo"/>
                   <p class="text-xs text-redAva text-[#F6303F] font-semibold">{{ modulo.parceiros }}</p>
@@ -74,7 +74,7 @@ const redirecionarParaDetalhes = (moduloId, moduloTitulo) => {
 }
 async function carregarCursos () {
   try {
-    const apiUrl = `http://127.0.0.1:3004/cursos?cateroriacateroria=Módulo de extensão${categoria.value}`
+    const apiUrl = `http://127.0.0.1:3004/cursos?cateroriacateroria=Módulo de extensão${categoria.value}` // adicona a categoria na requisição depois de ter clicado em um dos texto
     const response = await axios.get(apiUrl)
     console.log(apiUrl)
     if (response.data) {

@@ -1,5 +1,6 @@
 <template>
-  <v-breadcrumbs :items="dynamicItems" class="w-full pt-8 flex flex-wrap">
+  <!-- Quando estiver na rota moduloDetlhe a estilização é aplicada -->
+  <v-breadcrumbs :items="dynamicItems" class="w-full pt-8 flex flex-wrap" :class="{ 'breadcrumb-det-modulo': isDetalheModulo }" >
     <template v-slot:title="{ item }">
         {{ item.title }}
     </template>
@@ -11,6 +12,8 @@ import { ref, onMounted, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
 
 const dynamicItems = ref([])
+const rota = useRoute()
+const isDetalheModulo = rota.name === 'moduloDetalhes' // retorna um boleano informando se está na rota
 
 const updateBreadcrumb = () => {
   const route = useRoute()
@@ -66,6 +69,8 @@ const updateBreadcrumb = () => {
   }
   dynamicItems.value = breadcrumbItems
 }
+
+// const isDetalheModulo = route.name === 'moduloDetalhes'
 onMounted(() => {
   const route = useRoute()
   console.log('Rota Atual:', route.name)
@@ -82,6 +87,22 @@ watchEffect(() => {
 </script>
 
 <style>
+ /* a classe .breadcrumb-det-modulo é utilizada quando o breadcrumb se encontrar na rota moduloDetalhe*/
+.breadcrumb-det-modulo .v-breadcrumbs-item {
+  opacity: 1 !important;
+  color: #E0E0E0!important;
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.breadcrumb-det-modulo .v-breadcrumbs-divider {
+  color:  #E0E0E0 !important;
+}
+
+.breadcrumb-det-modulo .v-breadcrumbs-item--disabled {
+  opacity: 1 !important;
+  color: white!important;
+}
 /* Estiliza componente padrão vuetify para quando estiver ativo e estiver desabilitado */
 .v-breadcrumbs{
   padding-top: 30px ;

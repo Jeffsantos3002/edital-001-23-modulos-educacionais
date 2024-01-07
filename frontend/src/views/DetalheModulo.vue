@@ -1,7 +1,7 @@
 <template>
   <div class="flex flex-col items-center relative bg-gray-single overflow-hidden pb-12">
-    <img :src="modulo.capa" class="absolute inset-0 w-full h-full object-cover object-top opacity-65" style="image-rendering: pixelated;">
-    <div class="z-10 space-y-16">
+    <img :src="modulo.capa" alt="capa-page" title="capa do módulo" class="absolute inset-0 w-full h-full object-cover object-top filter brightness-50" style="image-rendering: pixelated;" >
+    <div class="z-10 space-y-16 px-10">
       <Breadcrumb/>
       <div class="space-y-8">
         <Title tamanho="text-4xl" cor="text-white" :texto="modulo.titulo"/>
@@ -9,18 +9,18 @@
       </div>
     </div>
   </div>
-  <div class="flex flex-col justify-center items-center py-12 space-y-10">
+  <div class="flex flex-col justify-center items-center px-10 py-12 space-y-10">
     <Title tamanho="text-4xl" cor="text-redAva" texto="Informações Gerais do Curso"/>
-    <div class="space-x-7 flex flex-wrap justify-center">
-      <div class="flex flex-row space-x-2 items-center">
+    <div class="flex flex-wrap justify-center">
+      <div class="flex flex-row space-x-2 items-center pr-7">
         <img src="../assets/hora-icon.svg" alt="duração" title="quantidade de horas">
         <p class="font-bold text-base">{{ modulo.duracao }}</p>
       </div>
-      <div class="flex flex-row space-x-2 items-center">
+      <div class="flex flex-row space-x-2 items-center pr-7">
         <img src="../assets/calendario-icon.svg" alt="duração" title="quantidade de horas">
         <p class="font-bold text-base">Desde {{ modulo.criado_em }}</p>
       </div>
-      <div class="flex flex-row space-x-2 items-center">
+      <div class="flex flex-row space-x-2 items-center pr-7">
         <img src="../assets/alunos-icon.svg" alt="duração" title="quantidade de horas">
         <p class="font-bold text-base">{{ modulo.matriculados }} alunos matriculados</p>
       </div>
@@ -29,26 +29,39 @@
         <p class="font-bold font-montserrat text-base">({{ parseFloat(modulo.numero_avaliacoes).toLocaleString('pt-BR') }} avaliações)</p>
       </div>
     </div>
-    <div class="flex flex-col items-center justify-center mx-10">
-      <div>
-        <Title tamanho="text-2xl" cor="text-redAva" texto="Sobre o curso"/>
+    <div class="flex flex-col items-center justify-center mx-10 space-y-8">
+      <div class="space-y-8">
+        <Title tamanho="text-2xl text-center" cor="text-redAva" texto="Sobre o curso"/>
         <p class="font-normal">{{ modulo.sobre }}</p>
       </div>
-      <div>
+      <div class="space-y-10 w-full">
         <Title tamanho="text-2xl" cor="text-redAva" texto="Objetivos"/>
-        <div>
-          <div v-if="modulo.objetivo_geral">
+        <div class="space-y-10">
+          <div v-if="modulo.objetivo_geral" class="space-y-3">
             <Title tamanho="text-base" cor="text-black" texto="Objetivo Geral"/>
             <p>{{ modulo.objetivo_geral }}</p>
           </div>
-          <div v-if="modulo.objetivo_especifico">
+          <div v-if="modulo.objetivo_especifico" class="space-y-3">
             <Title tamanho="text-base" cor="text-black" texto="Objetivos Especificos"/>
             <ul>
-              <li v-for="(especifico, index) in especificoFilt" :key="index" class="list-disc">{{ especifico }}</li>
+              <li v-for="(especifico, index) in especificoFilt" :key="index" class="list-disc list-inside">{{ especifico }}</li>
             </ul>
           </div>
         </div>
+      <div v-if="modulo.recursos_educacionais" class="flex flex-col items-center justify-center space-y-8">
+        <Title tamanho="text-2xl" cor="text-redAva" texto="Recursos educacionais"/>
+        {{ modulo.recursos_educacionais }}
+        <p>Serão utilizados textos no formato de PDF, vídeos, ilustrações, infográficos, dentre outros recursos.</p>
       </div>
+      <div class="flex flex-col items-center justify-center pt-16">
+        <Title tamanho="text-2xl" cor="text-redAva" texto="Creditos"/>
+        <div class="flex flex-wrap items-center justify-center">
+          <div v-for="(imagem, index) in modulo.creditos" :key="index" class="pr-9">
+            <img :src="imagem.capa" :alt="imagem.titulo" :title="imagem.titulo" class="w-72" loading="lazy">
+          </div>
+        </div>
+      </div>
+    </div>
     </div>
   </div>
 </template>
@@ -71,24 +84,9 @@ onMounted(async () => {
   const apiUrl = `http://127.0.0.1:3004/cursos/${moduleId}`
   const response = await axios.get(apiUrl)
   modulo.value = response.data
-  objEspecifico.value = response.data.objetivo_especifico.split('-')
-  especificoFilt.value = objEspecifico.value.filter(obj => obj !== '')
+  objEspecifico.value = response.data.objetivo_especifico ? response.data.objetivo_especifico.split('-') : ''
+  especificoFilt.value = objEspecifico.value ? objEspecifico.value.filter(obj => obj !== '') : ''
+  console.log(response.data.recursos_educacionais)
 })
+
 </script>
-
-<style>
-.v-breadcrumbs-item {
-  opacity: 1 !important;
-  color: #E0E0E0!important;
-  font-size: 16px;
-  font-weight: 600;
-}
-.v-breadcrumbs-divider{
-  color:  #E0E0E0 !important;
-}
-.v-breadcrumbs-item--disabled  {
-  opacity: 1 !important;
-  color: white!important;
-}
-
-</style>

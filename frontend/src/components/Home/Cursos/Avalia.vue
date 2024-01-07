@@ -12,14 +12,14 @@
 </template>
 
 <script setup>
-import { defineProps, ref, watch } from 'vue'
+import { defineProps, ref, watchEffect } from 'vue'
 
 const props = defineProps(['rating', 'estilo'])
 const localRating = ref('')
 const novaString = ref('')
 
-watch(() => props.rating, (newValue) => {
-  localRating.value = newValue || 0
+watchEffect(() => {
+  localRating.value = props.rating || 0
   novaString.value = localRating.value !== undefined ? localRating.value.toString().replace('.', ',') : ''
 })
 </script>
