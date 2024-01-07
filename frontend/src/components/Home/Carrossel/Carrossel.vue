@@ -2,6 +2,7 @@
   <v-carousel
     show-arrows
     hide-delimiter-background
+    height="760px"
   >
     <template v-slot:prev="{ props }">
       <v-btn

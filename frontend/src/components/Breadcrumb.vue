@@ -1,7 +1,7 @@
 <template>
-  <v-breadcrumbs :items="dynamicItems">
+  <v-breadcrumbs :items="dynamicItems" class="w-full pt-8 flex flex-wrap">
     <template v-slot:title="{ item }">
-        {{ item.title.toUpperCase() }}
+        {{ item.title }}
     </template>
   </v-breadcrumbs>
 </template>
@@ -40,26 +40,30 @@ const updateBreadcrumb = () => {
     case 'modulos':
       breadcrumbItems.push(
         { title: 'Inicio', disabled: false, href: '/' },
-        { title: 'modulos', disabled: true, href: '/modulos' }
+        { title: 'Modulos', disabled: true, href: '/modulos' }
+      )
+      break
+    case 'sobre':
+      breadcrumbItems.push(
+        { title: 'Inicio', disabled: false, href: '/' },
+        { title: 'Sobre', disabled: true, href: '/sobre' }
+      )
+      break
+    case 'transparencia':
+      breadcrumbItems.push(
+        { title: 'Inicio', disabled: false, href: '/' },
+        { title: 'Transparência', disabled: true, href: '/transparencia' }
+      )
+      break
+    case 'contato':
+      breadcrumbItems.push(
+        { title: 'Inicio', disabled: false, href: '/' },
+        { title: 'Contato', disabled: true, href: '/contato' }
       )
       break
     default:
-      console.log('deu em nada')
+      break
   }
-  // if (route.name === 'moduloDetalhes') {
-  //   breadcrumbItems.push({
-  //     title: route.params.titulo,
-  //     disabled: true,
-  //     href: '/inicio'
-  //   })
-  // } else {
-  //   breadcrumbItems.push({
-  //     title: 'alguma coisa',
-  //     disabled: true,
-  //     href: '/inicio'
-  //   })
-  // }
-
   dynamicItems.value = breadcrumbItems
 }
 onMounted(() => {
@@ -79,6 +83,9 @@ watchEffect(() => {
 
 <style>
 /* Estiliza componente padrão vuetify para quando estiver ativo e estiver desabilitado */
+.v-breadcrumbs{
+  padding-top: 30px ;
+}
 .v-breadcrumbs-item {
   opacity: 1 !important;
   color: #808080 !important;

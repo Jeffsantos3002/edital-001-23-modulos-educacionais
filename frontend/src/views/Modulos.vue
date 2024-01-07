@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div class="flex flex-col justify-center">
     <Breadcrumb/>
     <h1>Construindo</h1>
   </div>

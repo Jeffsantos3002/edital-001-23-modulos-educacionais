@@ -18,6 +18,7 @@ export default {
       'redAva': '#D2202C',
       'footer-gray': '#424146',
       'gray': '#707070',
+      'gray-single': '#757575',
       'placeholderColor': '#545454',
       'gray-container': '#F5F5F7',
       'bgSlid': '#522D2D',

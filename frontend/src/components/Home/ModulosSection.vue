@@ -1,21 +1,21 @@
 <template>
     <div class="flex flex-col space-y-8 items-center justify-start">
-      <h1 class="text-3xl text-redAva font-semibold">Módulos Educacionais</h1>
+      <Title tamanho="text-3xl" cor="text-redAva" texto="Módulo Educacionais"/>
       <div class="pl-2 flex flex-col md:flex-row md:space-x-8 w-full">
         <div class="mb-8 cursor-pointer pb-2"
           :class="{'filter': selectedTab === 'populares'}"
           @click="mudarCategoria('&_page=1&_limit=3','populares')">
-          <h3 class="text-xl font-semibold">Mais populares</h3>
+          <Title tamanho="text-xl" cor="text-black" texto="Mais populares"/>
         </div>
         <div class="mb-8 cursor-pointer pb-2"
           :class="{'filter': selectedTab === 'avaliados'}"
           @click="mudarCategoria('&_limit=3&_sort=numero_avaliacoes&_order=desc','avaliados')">
-          <h3 class="text-xl font-semibold">Mais bem avaliados</h3>
+          <Title tamanho="text-xl" cor="text-black" texto="Mais bem avaliados"/>
         </div>
         <div class="mb-8 cursor-pointer pb-2"
           :class="{'filter': selectedTab === 'recentes'}"
           @click="mudarCategoria('&_limit=3&_sort=criado_em&_order=desc','recentes')">
-          <h3 class="text-xl font-semibold">Mais recentes</h3>
+          <Title tamanho="text-xl" cor="text-black" texto="Mais recentes"/>
         </div>
       </div>
       <div class="space-y-16 flex flex-col items-center px-2">
@@ -25,7 +25,7 @@
               <div class="flex flex-col md:flex-row items-center justify-center space-x-5 ">
                 <img :src="modulo.capa" :alt="modulo.titulo" :title="modulo.titulo" class="w-32 h-32 rounded-card">
                 <div class="flex flex-col w-[274px] space-y-4">
-                  <h3 class="text-xl font-semibold">{{ modulo.titulo }}</h3>
+                  <Title tamanho="text-xl" cor="text-black" :texto="modulo.titulo"/>
                   <p class="text-xs text-redAva text-[#F6303F] font-semibold">{{ modulo.parceiros }}</p>
                 </div>
               </div>
@@ -60,6 +60,7 @@ import Avalia from '@/components/Home/Cursos/Avalia.vue'
 import buttonAva from '@/components/buttonAva.vue'
 import axios from 'axios'
 import { useRouter } from 'vue-router'
+import Title from '../Title.vue'
 
 const router = useRouter()
 const responsed = ref('')

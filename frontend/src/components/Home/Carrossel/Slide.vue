@@ -1,12 +1,6 @@
 <template>
   <div class="d-flex fill-height justify-center align-center w-full relative">
     <div class="h-full w-full">
-      <!-- <img src="../../../assets/slide/slid1.png" alt="" class="h-full w-full object-cover opacity-65" >
-      <div class="flex flex-col items-center justify-center space-y-6 absolute inset-0 px-10">
-        <img src="../../../assets/slide/avasusSlide.svg" alt="" title="">
-        <img src="../../../assets/slide/Line.svg" alt="" title="">
-        <img src="../../../assets/slide/textSlid.svg" alt="" title="">
-      </div> -->
       <img :src="imagem" :alt="alt" class="h-full w-full object-cover opacity-65" >
       <div v-if="contents.length > 0" class="flex flex-col items-center justify-center space-y-6 absolute inset-0 px-10">
         <img v-for="(content, index) in contents" :src="content" :key="index">
