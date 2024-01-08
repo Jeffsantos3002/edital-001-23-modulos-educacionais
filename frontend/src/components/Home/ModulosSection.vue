@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col space-y-8 items-center justify-start">
-      <Title tamanho="text-3xl" cor="text-redAva" texto="Módulo Educacionais"/>
+      <Title tamanho="text-3xl" cor="text-redAva" texto="Módulos Educacionais"/>
       <div class="pl-2 flex flex-col md:flex-row md:space-x-8 w-full">
         <div class="mb-8 cursor-pointer pb-2"
           :class="{'filter': selectedTab === 'populares'}"
@@ -98,7 +98,6 @@ watch(() => {
 const mudarCategoria = (novaCategoria, section) => {
   categoria.value = novaCategoria
   selectTab(section)
-  // Faça outras ações necessárias ao mudar a categoria
 }
 </script>
 
