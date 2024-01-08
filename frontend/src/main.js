@@ -29,5 +29,6 @@ const vuetify = createVuetify({
     }
   }
 })
+window.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__ = true
 
 createApp(App).use(vuetify).use(router).mount('#app')

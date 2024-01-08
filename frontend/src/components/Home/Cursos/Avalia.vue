@@ -32,4 +32,7 @@ watchEffect(() => {
   margin-right:5px;
 
 }
+.v-rating__wrapper{
+  margin-right: 8px;
+}
 </style>
