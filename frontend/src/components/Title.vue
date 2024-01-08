@@ -1,4 +1,5 @@
 <template>
+  <!-- Passa as props na tag se existir -->
   <h1 :class="{ [props.tamanho]: true, [props.cor]: true, 'font-semibold': true }">{{ props.texto }}</h1>
 </template>
 

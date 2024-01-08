@@ -22,11 +22,11 @@
       </div>
       <div class="flex flex-row space-x-2 items-center pr-7">
         <img src="../assets/alunos-icon.svg" alt="duração" title="quantidade de horas">
-        <p class="font-bold text-base">{{ modulo.matriculados }} alunos matriculados</p>
+        <p class="font-bold text-base">{{ numberReal(modulo.matriculados) }} alunos matriculados</p>
       </div>
       <div class="flex flex-wrap space-x-1 items-center justify-center">
         <Avalia :rating="modulo.avaliacao" estilo="font-bold text-base font-montserrat"/>
-        <p class="font-bold font-montserrat text-base">({{ parseFloat(modulo.numero_avaliacoes).toLocaleString('pt-BR') }} avaliações)</p>
+        <p class="font-bold font-montserrat text-base">({{numberReal(modulo.numero_avaliacoes) }} avaliações)</p>
       </div>
     </div>
     <div class="flex flex-col items-center justify-center mx-10 space-y-8">
@@ -78,10 +78,12 @@ import Breadcrumb from '@/components/Breadcrumb.vue'
 const modulo = ref('')
 const objEspecifico = ref([])
 const especificoFilt = ref([])
+const numberReal = (numero) => { return parseFloat(numero).toLocaleString('pt-BR') } // trata numeros do db para pt-BR com ponto flutuante
+
 onMounted(async () => {
   const route = useRoute()
   const moduleId = route.params.id
-  const apiUrl = `http://127.0.0.1:3004/cursos/${moduleId}`
+  const apiUrl = `http://127.0.0.1:3004/cursos/${moduleId}` // faz a requisição com base no id passado nos paramentros da rota
   const response = await axios.get(apiUrl)
   modulo.value = response.data
   objEspecifico.value = response.data.objetivo_especifico ? response.data.objetivo_especifico.split('-') : ''

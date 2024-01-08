@@ -34,7 +34,7 @@
                   <div class="pl-4 flex flex-row space-x-5">
                     <div class="flex flex-row items-center space-x-2">
                       <img src="../../assets/alunos-icon.svg" alt="alunos-icon" title="alunos">
-                      <p class="text-base">{{modulo.matriculados}}</p>
+                      <p class="text-base">{{ numberReal(modulo.matriculados) }}</p>
                     </div>
                     <div class="flex flex-row items-center space-x-2">
                       <img src="../../assets/hora-icon.svg" alt="hora-icon" title="hora">
@@ -66,12 +66,17 @@ const router = useRouter()
 const responsed = ref('')
 const categoria = ref('&_page=1&_limit=3') // faz requisição de modulos do db inicial, depois fica dinâmico
 const selectedTab = ref('populares') // aciona o sublinhado assim que a página carrega
+
+const numberReal = (numero) => { return parseFloat(numero).toLocaleString('pt-BR') } // trata numeros do db para pt-BR com ponto flutuante
+
 const selectTab = (tab) => { // lógica para subilinhar os filtros ao clicar
   selectedTab.value = tab
 }
+
 const redirecionarParaDetalhes = (moduloId, moduloTitulo) => {
-  router.push({ name: 'moduloDetalhes', params: { id: moduloId, titulo: moduloTitulo } })
+  router.push({ name: 'moduloDetalhes', params: { id: moduloId, titulo: moduloTitulo } }) // redirenciona para single-page moduloDetalhes
 }
+
 async function carregarCursos () {
   try {
     const apiUrl = `http://127.0.0.1:3004/cursos?cateroriacateroria=Módulo de extensão${categoria.value}` // adicona a categoria na requisição depois de ter clicado em um dos texto
