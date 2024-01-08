@@ -34,7 +34,7 @@
         <Title tamanho="text-2xl text-center" cor="text-redAva" texto="Sobre o curso"/>
         <p class="font-normal">{{ modulo.sobre }}</p>
       </div>
-      <div class="space-y-10 w-full">
+      <div class="space-y-10 w-full flex flex-col justify-center items-center">
         <Title tamanho="text-2xl" cor="text-redAva" texto="Objetivos"/>
         <div class="space-y-10">
           <div v-if="modulo.objetivo_geral" class="space-y-3">

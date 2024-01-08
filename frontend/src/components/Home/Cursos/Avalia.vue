@@ -5,7 +5,6 @@
       :readonly="true"
       half-increments
       :color="'#F6303F'"
-      class="pr-2.5"
     ></v-rating>
     <pre><p :class="props.estilo">{{ novaString }}</p></pre>
   </div>
@@ -27,5 +26,10 @@ watchEffect(() => {
 <style>
 .v-btn--icon.v-btn--density-default{
   height: 100%;
+  width: 16px !important;
+}
+.v-rating__item label{
+  margin-right:5px;
+
 }
 </style>

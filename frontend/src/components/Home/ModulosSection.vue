@@ -54,7 +54,7 @@
 </template>
 
 <script setup>
-import { ref, onMounted, watch } from 'vue'
+import { ref, onMounted, watchEffect } from 'vue'
 import Card from './Card.vue'
 import Avalia from '@/components/Home/Cursos/Avalia.vue'
 import buttonAva from '@/components/buttonAva.vue'
@@ -91,7 +91,7 @@ async function carregarCursos () {
 }
 
 onMounted(carregarCursos)
-watch(() => {
+watchEffect(() => {
   carregarCursos()
 })
 
