@@ -48,13 +48,12 @@
         </div>
       </div>
       <div class="flex flex-col w-full justify-center items-center">
-        <Loading/>
         <div class="mx-2 flex flex-wrap min-h-[1106px] max-w-[1200px] items-center justify-center">
           <div class="flex flex-col sm:w-[350px] my-7 sm:mr-8" v-for="(modulo, index) in paginatedItems" :key="index">
             <img v-lazy="modulo.capa"  alt="Descrição da imagem" class="h-52 w-full object-cover rounded-card" loading="lazy"
             />
-            <Title tamanho="text-xl" cor="text-black" :texto="limitText(modulo.titulo, 45 )"/>
-            <p class="text-xs text-redAva text-[#F6303F] flex font-semibold h-9 items-center">{{ modulo.parceiros }}</p>
+            <Title tamanho="text-xl" cor="text-black" :texto="limitText(modulo.titulo, 45 )" class="h-14 flex items-center"/>
+            <p class="text-xs text-redAva text-[#F6303F] flex font-semibold h-9 items-center">{{limitText(modulo.parceiros, 100 ) }}</p>
             <div class="flex flex-wrap">
               <div class="flex flex-row space-x-5">
                 <div class="flex flex-row items-center space-x-2">
@@ -92,7 +91,6 @@ import axios from 'axios'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import Title from '@/components/Title.vue'
 import Avalia from '@/components/Home/Cursos/Avalia.vue'
-import Loading from '@/components/Loadding.vue'
 
 const categoria = ref('Covid%2019') // faz requisição de modulos do db inicial, depois fica dinâmico
 const selectedTab = ref('covid') // aciona o sublinhado assim que a página carrega
@@ -107,7 +105,6 @@ const selectTab = (tab) => { // lógica para subilinhar os filtros ao clicar
 
 const mudarCategoria = (novaCategoria, section) => {
   categoria.value = novaCategoria
-  console.log('categoria: ' + categoria.value)
   selectTab(section)
 }
 
@@ -115,7 +112,6 @@ async function carregarCursos () {
   try {
     const apiUrl = `http://127.0.0.1:3004/cursos?cateroria=${categoria.value}` // adicona a categoria na requisição depois de ter clicado em um dos texto
     const response = await axios.get(apiUrl)
-    console.log('--85' + apiUrl)
     if (response.data) {
       items.value = response.data
     }
@@ -131,7 +127,7 @@ const limitText = (text, limite) => {
     return text
   }
 }
-
+// lógica de paginação para o componente do vuetify
 const paginatedItems = computed(() => {
   const startIndex = (currentPage.value - 1) * itemsPerPage.value
   const endIndex = startIndex + itemsPerPage.value
@@ -142,7 +138,6 @@ const totalPages = computed(() => Math.ceil(items.value.length / itemsPerPage.va
 
 watchEffect(() => {
   carregarCursos()
-  console.log('watch')
 })
 
 onMounted(carregarCursos)
