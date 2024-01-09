@@ -1,6 +1,7 @@
 import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
+import VueLazyload from 'vue-lazyload'
 import './styles/main.css'
 
 // Vuetify
@@ -29,6 +30,10 @@ const vuetify = createVuetify({
     }
   }
 })
-window.__VUE_PROD_HYDRATION_MISMATCH_DETAILS__ = true
 
-createApp(App).use(vuetify).use(router).mount('#app')
+createApp(App).use(vuetify).use(VueLazyload, {
+  preLoad: 1.3,
+  error: 'loadding',
+  loading: require('@/assets/calendario-icon.svg'),
+  attempt: 1
+}).use(router).mount('#app')

@@ -72,15 +72,10 @@ const updateBreadcrumb = () => {
 
 // const isDetalheModulo = route.name === 'moduloDetalhes'
 onMounted(() => {
-  const route = useRoute()
-  console.log('Rota Atual:', route.name)
-
   updateBreadcrumb()
 })
 
 watchEffect(() => {
-  const route = useRoute()
-  console.log('Rota Atual:', route.name)
   updateBreadcrumb()
 })
 

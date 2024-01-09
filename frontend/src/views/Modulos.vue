@@ -48,9 +48,11 @@
         </div>
       </div>
       <div class="flex flex-col w-full justify-center items-center">
-        <div class="mx-2 flex flex-wrap max-w-[1200px] items-center justify-center">
+        <Loading/>
+        <div class="mx-2 flex flex-wrap min-h-[1106px] max-w-[1200px] items-center justify-center">
           <div class="flex flex-col sm:w-[350px] my-7 sm:mr-8" v-for="(modulo, index) in paginatedItems" :key="index">
-            <img :src="modulo.capa" class="h-52 w-full object-cover rounded-card" loading="lazy"/>
+            <img v-lazy="modulo.capa"  alt="Descrição da imagem" class="h-52 w-full object-cover rounded-card" loading="lazy"
+            />
             <Title tamanho="text-xl" cor="text-black" :texto="limitText(modulo.titulo, 45 )"/>
             <p class="text-xs text-redAva text-[#F6303F] flex font-semibold h-9 items-center">{{ modulo.parceiros }}</p>
             <div class="flex flex-wrap">
@@ -90,6 +92,7 @@ import axios from 'axios'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import Title from '@/components/Title.vue'
 import Avalia from '@/components/Home/Cursos/Avalia.vue'
+import Loading from '@/components/Loadding.vue'
 
 const categoria = ref('Covid%2019') // faz requisição de modulos do db inicial, depois fica dinâmico
 const selectedTab = ref('covid') // aciona o sublinhado assim que a página carrega
@@ -115,7 +118,6 @@ async function carregarCursos () {
     console.log('--85' + apiUrl)
     if (response.data) {
       items.value = response.data
-      console.log(items.value)
     }
   } catch (error) {
     console.error('Erro ao carregar cursos:', error)
