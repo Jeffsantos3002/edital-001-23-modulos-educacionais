@@ -1,6 +1,6 @@
 <template>
   <!-- Quando estiver na rota moduloDetlhe a estilização é aplicada -->
-  <v-breadcrumbs :items="dynamicItems" class="w-full pt-8 flex flex-wrap" :class="{ 'breadcrumb-det-modulo': isDetalheModulo }" >
+  <v-breadcrumbs :items="dynamicItems" class="pt-8 flex flex-wrap" :class="{ 'breadcrumb-det-modulo': isDetalheModulo }" >
     <template v-slot:title="{ item }">
         {{ item.title }}
     </template>
