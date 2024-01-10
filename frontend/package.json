@@ -16,7 +16,7 @@
     "bootstrap-vue": "^2.23.1",
     "core-js": "^3.35.0",
     "v-calendar": "^2.4.2",
-    "vue": "^3.4.5",
+    "vue": "^3.4.7",
     "vue-lazyload": "^3.0.0",
     "vue-router": "^4.2.5",
     "vue3-lazyload": "^0.3.8",

@@ -1,54 +1,57 @@
 <template>
-  <div class="flex flex-col justify-center">
-    <Breadcrumb/>
+  <Breadcrumb/>
+  <div class="w-full flex flex-col items-center justify-center px-2">
     <Title tamanho="text-3xl" cor="text-redAva" texto="Módulos Educacionais"/>
     <div class="">
-      <div class="pl-2 flex flex-wrap md:flex-row w-full">
-        <div class="mb-8 cursor-pointer pb-2 pr-8 min-h-12"
+      <div class="flex flex-wrap md:flex-row w-full mt-7">
+        <div class="cursor-pointer pb-2 pr-8 min-h-9"
           @click="mudarCategoria('Covid%2019','covid')">
           <div :class="{'filter': selectedTab === 'covid'}">
             <Title tamanho="text-xl" cor="" texto="Covid 19" :class="{'textFilter': selectedTab === 'covid'}"/>
           </div>
         </div>
-        <div class="mb-8 cursor-pointer pb-2 pr-8 min-h-12"
+        <div class="cursor-pointer pb-2 pr-8 min-h-9"
           @click="mudarCategoria('Síflis e outras ist','sifilis')">
           <div :class="{'filter': selectedTab === 'sifilis'}">
             <Title tamanho="text-xl" cor="" texto="Sífilis e outras Ist’s" :class="{'textFilter': selectedTab === 'sifilis'}"/>
           </div>
         </div>
-        <div class="mb-8 cursor-pointer pb-2 pr-8 min-h-12"
+        <div class="cursor-pointer pb-2 pr-8 min-h-9"
           @click="mudarCategoria('Preceptoria','perceptoria')">
           <div :class="{'filter': selectedTab === 'perceptoria'}">
             <Title tamanho="text-xl" cor="" texto="Preceptoria" :class="{'textFilter': selectedTab === 'perceptoria'}"/>
           </div>
         </div>
-        <div class="mb-8 cursor-pointer pb-2 pr-8 min-h-12"
+        <div class="cursor-pointer pb-2 pr-8 min-h-9"
           @click="mudarCategoria('Doenças raras','doencas')">
           <div :class="{'filter': selectedTab === 'doencas'}">
             <Title tamanho="text-xl" cor="" texto="Doenças raras" :class="{'textFilter': selectedTab === 'doencas'}"/>
           </div>
         </div>
-        <div class="mb-8 cursor-pointer pb-2 pr-8 min-h-12"
+        <div class="cursor-pointer pb-2 pr-8 min-h-9"
           @click="mudarCategoria('WebPalestras','palestras')">
           <div :class="{'filter': selectedTab === 'palestras'}">
             <Title tamanho="text-xl" cor="" texto="Web Palestras" :class="{'textFilter': selectedTab === 'palestras'}"/>
           </div>
         </div>
-        <div class="mb-8 cursor-pointer pb-2 pr-8 min-h-12"
+        <div class="cursor-pointer pb-2 pr-8 min-h-9"
           @click="mudarCategoria('Sistema%20prisional','prisional')">
           <div :class="{'filter': selectedTab === 'prisional'}">
             <Title tamanho="text-xl" cor="" texto="Sistemas prisional" :class="{'textFilter': selectedTab === 'prisional'}"/>
           </div>
         </div>
-        <div class="mb-8 cursor-pointer pb-2 pr-8 min-h-12"
+        <div class="cursor-pointer pb-2 pr-8 min-h-9"
           @click="mudarCategoria('OPAS','opas')">
           <div :class="{'filter': selectedTab === 'opas'}">
             <Title tamanho="text-xl" cor="" texto="OPAS" :class="{'textFilter': selectedTab === 'opas'}"/>
           </div>
         </div>
       </div>
-      <div class="flex flex-col w-full justify-center items-center">
-        <div class="mx-2 flex flex-wrap min-h-[1106px] max-w-[1200px] items-center justify-center">
+      <div>
+        <p class="italic pt-7">{{ paginatedItems.length }} de {{ items.length }} resultados</p>
+      </div>
+      <div class="flex flex-col">
+        <div v-if="items" class="flex flex-wrap min-h-[1106px] max-w-[1162px]">
           <div class="flex flex-col sm:w-[350px] my-7 sm:mr-8" v-for="(modulo, index) in paginatedItems" :key="index">
             <img v-lazy="modulo.capa"  alt="Descrição da imagem" class="h-52 w-full object-cover rounded-card" loading="lazy"
             />
@@ -58,7 +61,7 @@
               <div class="flex flex-row space-x-5">
                 <div class="flex flex-row items-center space-x-2">
                   <img src="../assets/alunos-icon.svg" alt="alunos-icon" title="alunos">
-                  <p class="text-base">{{numberReal(10562)}}</p>
+                  <p class="text-base">{{numberReal(modulo.matriculados)}}</p>
                 </div>
                 <div class="flex flex-row items-center space-x-2 pr-5">
                   <img src="../assets/hora-icon.svg" alt="hora-icon" title="hora">
@@ -79,7 +82,13 @@
           v-if="totalPages > 1"
           v-model="currentPage"
           :length="totalPages"
-        ></v-pagination>
+          :total-visible="5"
+          on-next="proximo"
+          >
+          <template v-slot:next>
+            <span @click="next">Próximo</span>
+          </template>
+        </v-pagination>
       </div>
     </div>
   </div>
@@ -99,6 +108,13 @@ const itemsPerPage = ref(6) // Número de itens por página
 const currentPage = ref(1) // Página atual
 const numberReal = (numero) => { return parseFloat(numero).toLocaleString('pt-BR') } // trata numeros do db para pt-BR com ponto flutuante
 
+const next = () => {
+  const current = currentPage.value
+  const pages = Math.ceil(items.value.length / itemsPerPage.value)
+  if (current < pages) {
+    currentPage.value++
+  }
+}
 const selectTab = (tab) => { // lógica para subilinhar os filtros ao clicar
   selectedTab.value = tab
 }
@@ -114,6 +130,8 @@ async function carregarCursos () {
     const response = await axios.get(apiUrl)
     if (response.data) {
       items.value = response.data
+      console.log('items: ' + items.value)
+      console.log('response: ' + response.data)
     }
   } catch (error) {
     console.error('Erro ao carregar cursos:', error)
@@ -131,10 +149,16 @@ const limitText = (text, limite) => {
 const paginatedItems = computed(() => {
   const startIndex = (currentPage.value - 1) * itemsPerPage.value
   const endIndex = startIndex + itemsPerPage.value
+  console.log('startIndex:', startIndex, 'endIndex:', endIndex)
   return items.value.slice(startIndex, endIndex)
 })
 
-const totalPages = computed(() => Math.ceil(items.value.length / itemsPerPage.value))
+const totalPages = computed(() => {
+  if (items.value.length === 0) {
+    return 1
+  }
+  return Math.ceil(items.value.length / itemsPerPage.value)
+})
 
 watchEffect(() => {
   carregarCursos()
