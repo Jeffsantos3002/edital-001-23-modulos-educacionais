@@ -3,7 +3,9 @@
   <div class="w-full flex flex-col items-center justify-center px-2">
     <Title tamanho="text-3xl" cor="text-redAva" texto="Módulos Educacionais"/>
     <div class="">
-      <div class="flex flex-wrap md:flex-row w-full mt-7">
+    <!-- Categorias: o filtro é aplicado quando a categoria é reconhecida pelo selectedTab que está sendo chamado na função mudar categoria -->
+    <!-- Após a categoria ser reconhecida seu valor é atribuido a variável 'categoria' e passada como parâmentro de requisição para API -->
+      <section class="flex flex-wrap md:flex-row w-full mt-7">
         <div class="cursor-pointer pb-2 pr-8 min-h-9"
           @click="mudarCategoria('Covid%2019','covid')">
           <div :class="{'filter': selectedTab === 'covid'}">
@@ -46,11 +48,11 @@
             <Title tamanho="text-xl" cor="" texto="OPAS" :class="{'textFilter': selectedTab === 'opas'}"/>
           </div>
         </div>
-      </div>
+      </section>
       <div>
         <p class="italic pt-7">{{ paginatedItems.length }} de {{ items.length }} resultados</p>
       </div>
-      <div class="flex flex-col">
+      <section class="flex flex-col">
         <div v-if="items" class="flex flex-wrap min-h-[1106px] max-w-[1162px]">
           <div class="flex flex-col sm:w-[350px] my-7 sm:mr-8" v-for="(modulo, index) in paginatedItems" :key="index">
             <img v-lazy="modulo.capa"  alt="Descrição da imagem" class="h-52 w-full object-cover rounded-card" loading="lazy"
@@ -83,13 +85,13 @@
           v-model="currentPage"
           :length="totalPages"
           :total-visible="5"
-          on-next="proximo"
+          :on-next="proximo"
           >
           <template v-slot:next>
             <span @click="next">Próximo</span>
           </template>
         </v-pagination>
-      </div>
+      </section>
     </div>
   </div>
 </template>
@@ -111,10 +113,9 @@ const numberReal = (numero) => { return parseFloat(numero).toLocaleString('pt-BR
 const next = () => {
   const current = currentPage.value
   const pages = Math.ceil(items.value.length / itemsPerPage.value)
-  if (current < pages) {
-    currentPage.value++
-  }
+  currentPage.value = current < pages ? current + 1 : current
 }
+
 const selectTab = (tab) => { // lógica para subilinhar os filtros ao clicar
   selectedTab.value = tab
 }
@@ -147,7 +148,7 @@ const limitText = (text, limite) => {
 }
 // lógica de paginação para o componente do vuetify
 const paginatedItems = computed(() => {
-  const startIndex = (currentPage.value - 1) * itemsPerPage.value
+  const startIndex = ((currentPage.value - 1) * itemsPerPage.value) > totalPages.value ? (currentPage.value - 1) * itemsPerPage.value : 0
   const endIndex = startIndex + itemsPerPage.value
   console.log('startIndex:', startIndex, 'endIndex:', endIndex)
   return items.value.slice(startIndex, endIndex)
@@ -161,7 +162,8 @@ const totalPages = computed(() => {
 })
 
 watchEffect(() => {
-  carregarCursos()
+  carregarCursos() // quando mudar de categoria essa função será chamada fazendo outra requisição
+  currentPage.value = 1 // essa ação é necessário para zerar o startIndex e não ouver erros de paginação ja que a quantidade de páginas é dinâmica
 })
 
 onMounted(carregarCursos)

@@ -43,6 +43,7 @@ const updateBreadcrumb = () => {
     case 'modulos':
       breadcrumbItems.push(
         { title: 'Inicio', disabled: false, href: '/' },
+        { title: 'Cursos', disabled: true, href: '/cursos' },
         { title: 'Modulos', disabled: true, href: '/modulos' }
       )
       break
