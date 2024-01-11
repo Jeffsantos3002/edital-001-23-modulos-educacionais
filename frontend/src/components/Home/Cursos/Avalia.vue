@@ -4,8 +4,9 @@
       v-model="localRating"
       :readonly="true"
       half-increments
-      :color="'#F6303F'"
-    ></v-rating>
+      color="#D2202C"
+      dense
+      ></v-rating>
     <pre><p :class="props.estilo">{{ novaString }}</p></pre>
   </div>
 </template>
@@ -26,13 +27,16 @@ watchEffect(() => {
 <style>
 .v-btn--icon.v-btn--density-default{
   height: 100%;
-  width: 16px !important;
 }
 .v-rating__item label{
   margin-right:5px;
-
+  width: 40px;
+}
+.v-rating__item{
+  width: 40px;
 }
 .v-rating__wrapper{
+  width: 20px;
   margin-right: 8px;
 }
 </style>

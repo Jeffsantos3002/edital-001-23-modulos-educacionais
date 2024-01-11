@@ -101,7 +101,7 @@ watchEffect(() => {
 }
 /* Estiliza componente padrão vuetify para quando estiver ativo e estiver desabilitado */
 .v-breadcrumbs{
-  padding-top: 30px ;
+ padding: 0px;
 }
 .v-breadcrumbs-item {
   opacity: 1 !important;

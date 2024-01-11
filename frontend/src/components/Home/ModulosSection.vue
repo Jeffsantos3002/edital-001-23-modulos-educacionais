@@ -30,7 +30,7 @@
                 </div>
               </div>
               <div class="flex flex-col sm:flex-row sm:items-end lg:items-center justify-center space-x-5 py-5">
-                <div class="flex flex-col md:flex-row md:space-x-5">
+                <div class="flex flex-col md:flex-row space-x-5">
                   <div class="pl-4 flex flex-row space-x-5">
                     <div class="flex flex-row items-center space-x-2">
                       <img src="../../assets/alunos-icon.svg" alt="alunos-icon" title="alunos">

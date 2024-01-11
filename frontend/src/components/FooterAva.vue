@@ -1,5 +1,5 @@
 <template>
-  <div class="h-full">
+  <div class="h-full mt-32">
     <div class="bg-redAva flex flex-col justify-center items-center h-56 space-y-8 md:space-y-11 py-20">
       <h2 class="text-white text-2xl">Realização</h2>
       <div class="flex flex-col md:flex-row md:space-x-20">
