@@ -22,12 +22,12 @@
           :total-visible="5"
           :prev-icon="null"
           :on-next="proximo"
-          :border="true"
           size="40px"
-          class="custom-pagination rounded-lg"
+          class="custom-pagination"
+          start="1"
           >
           <template v-slot:next>
-            <span @click="next" class=" flex items-center h-full border">Próximo ></span>
+            <v-btn @click="next" class=" flex items-center h-full font-semibold px-3 bg-[#FAFAFA]" elevation="0">Próximo ></v-btn>
           </template>
         </v-pagination>
       </section>
@@ -99,13 +99,17 @@ onMounted(carregarParceiros)
 <style>
 .v-pagination__item, .v-pagination__first, .v-pagination__prev, .v-pagination__next, .v-pagination__last{
   margin: 0px !important;
+  color: black;
 }
 .v-pagination__prev{
   display: none;
 }
 /* Arredondar as laterais do componente de paginação */
-.custom-pagination .v-pagination {
-  border-radius: 10px;
+.v-pagination__list {
+  border-radius: 10px !important;
+  overflow: hidden;
+  background-color: #FAFAFA;
+  border: solid 1px #D9D9D9;
 }
 
 /* Estilo para os itens ativos da paginação */
@@ -113,7 +117,15 @@ onMounted(carregarParceiros)
   color: white !important; /* Texto em branco */
   background-color: #F6303F !important; /* Fundo vermelho */
 }
-.v-pagination__item--is-active .v-btn__overlay{
-  opacity: 0 !important;
+.v-pagination__item{
+  border-right: solid 1px #D9D9D9 !important;
+}
+.v-pagination .v-btn {
+border-radius: 0px !important;
+}
+.v-pagination .v-pagination__item .v-btn span {
+  /* Seu estilo personalizado aqui */
+  font-size: 16px;
+  font-weight: 600;
 }
 </style>

@@ -81,21 +81,23 @@
               </div>
             </div>
           </div>
-          <v-pagination
-            v-if="totalPages > 1"
-            v-model="currentPage"
-            :length="totalPages"
-            :total-visible="5"
-            :prev-icon="null"
-            :on-next="proximo"
-            :border="true"
-            size="40px"
-            class="custom-pagination rounded-lg"
-            >
-            <template v-slot:next>
-              <span @click="next" class=" flex items-center h-full border">Próximo ></span>
-            </template>
-          </v-pagination>
+          <div class="flex justify-center items-center">
+            <v-pagination
+              v-if="totalPages > 1"
+              v-model="currentPage"
+              :length="totalPages"
+              :total-visible="5"
+              :prev-icon="null"
+              :on-next="proximo"
+              size="40px"
+              class="custom-pagination"
+              start="1"
+              >
+              <template v-slot:next>
+                <v-btn @click="next" class=" flex items-center h-full font-semibold px-3 bg-[#FAFAFA]" elevation="0">Próximo ></v-btn>
+              </template>
+            </v-pagination>
+          </div>
         </section>
       </div>
     </div>
@@ -183,28 +185,6 @@ onMounted(carregarCursos)
 }
 .textFilter{
   color: #707070 !important;
-}
-
-/* Estilos do pagination */
-
-.v-pagination__item, .v-pagination__first, .v-pagination__prev, .v-pagination__next, .v-pagination__last{
-  margin: 0px !important;
-}
-.v-pagination__prev{
-  display: none;
-}
-/* Arredondar as laterais do componente de paginação */
-.custom-pagination .v-pagination {
-  border-radius: 10px;
-}
-
-/* Estilo para os itens ativos da paginação */
-.custom-pagination .v-pagination__item--is-active button {
-  color: white !important; /* Texto em branco */
-  background-color: #F6303F !important; /* Fundo vermelho */
-}
-.v-pagination__item--is-active .v-btn__overlay{
-  opacity: 0 !important;
 }
 
 </style>

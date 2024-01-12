@@ -23,7 +23,7 @@
           <Card v-for="modulo in responsed" :key="modulo.id">
             <div class="px-5 flex flex-col md:flex-row items-center md:space-x-5 py-5">
               <div class="flex flex-col md:flex-row items-center justify-center space-x-5 ">
-                <img :src="modulo.capa" :alt="modulo.titulo" :title="modulo.titulo" class="w-32 h-32 rounded-card" loading="lazy">
+                <img v-lazy="modulo.capa" :alt="modulo.titulo" :title="modulo.titulo" class="w-32 h-32 rounded-card" loading="lazy">
                 <div class="flex flex-col w-[274px] space-y-4">
                   <Title tamanho="text-xl" cor="text-black" :texto="modulo.titulo"/>
                   <p class="text-xs text-redAva text-[#F6303F] font-semibold">{{ modulo.parceiros }}</p>
