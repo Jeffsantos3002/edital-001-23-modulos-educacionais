@@ -1,7 +1,7 @@
 <template>
-  <div class="flex flex-col items-center relative bg-gray-single overflow-hidden pb-12">
-    <img :src="modulo.capa" alt="capa-page" title="capa do módulo" class="absolute inset-0 w-full h-full object-cover object-top filter brightness-50" style="image-rendering: pixelated;" >
-    <div class="z-10 space-y-16 px-10">
+  <div class="flex flex-col items-center relative overflow-hidden pb-12 px-2.5 md:px-10">
+    <img :src="modulo.capa" alt="capa-page" title="capa do módulo" class="absolute inset-0 w-full h-full object-cover object-top filter brightness-50 border-0" style="image-rendering: pixelated;" >
+    <div class="z-10 space-y-16" v-if="modulo.titulo">
       <Breadcrumb/>
       <div class="space-y-8">
         <Title tamanho="text-4xl" cor="text-white" :texto="modulo.titulo"/>
@@ -9,19 +9,19 @@
       </div>
     </div>
   </div>
-  <div class="flex flex-col justify-center items-center px-10 py-12 space-y-10">
-    <Title tamanho="text-4xl" cor="text-redAva" texto="Informações Gerais do Curso"/>
+  <div class="flex flex-col justify-center items-center py-12 px-2.5 md:px-10 space-y-10">
+    <Title tamanho="text-4xl text-center" cor="text-redAva" texto="Informações Gerais do Curso"/>
     <div class="flex flex-wrap justify-center">
       <div class="flex flex-row space-x-2 items-center pr-7">
-        <img src="../assets/hora-icon.svg" alt="duração" title="quantidade de horas">
+        <img src="../assets/hora-icon.svg" alt="duração" title="quantidade de horas" class="w-8 h-6">
         <p class="font-bold text-base">{{ modulo.duracao }}</p>
       </div>
       <div class="flex flex-row space-x-2 items-center pr-7">
-        <img src="../assets/calendario-icon.svg" alt="duração" title="quantidade de horas">
+        <img src="../assets/calendario-icon.svg" alt="duração" title="quantidade de horas" class="w-8 h-6">
         <p class="font-bold text-base">Desde {{ modulo.criado_em }}</p>
       </div>
-      <div class="flex flex-row space-x-2 items-center pr-7">
-        <img src="../assets/alunos-icon.svg" alt="duração" title="quantidade de horas">
+      <div class="flex flex-row space-x-2 items-center pr-7 md:py-0 py-5">
+        <img src="../assets/alunos-icon.svg" alt="duração" title="quantidade de horas" class="w-8 h-6">
         <p class="font-bold text-base">{{ numberReal(modulo.matriculados) }} alunos matriculados</p>
       </div>
       <div class="flex flex-wrap space-x-1 items-center justify-center">
@@ -32,11 +32,11 @@
     <div class="flex flex-col items-center justify-center mx-10 space-y-8">
       <div class="space-y-8">
         <Title tamanho="text-2xl text-center" cor="text-redAva" texto="Sobre o curso"/>
-        <p class="font-normal">{{ modulo.sobre }}</p>
+        <p class="font-normal text-justify">{{ modulo.sobre }}</p>
       </div>
       <div class="space-y-10 w-full flex flex-col justify-center items-center">
         <Title tamanho="text-2xl" cor="text-redAva" texto="Objetivos"/>
-        <div class="space-y-10">
+        <div class="space-y-10 w-full">
           <div v-if="modulo.objetivo_geral" class="space-y-3">
             <Title tamanho="text-base" cor="text-black" texto="Objetivo Geral"/>
             <p>{{ modulo.objetivo_geral }}</p>
@@ -48,16 +48,16 @@
             </ul>
           </div>
         </div>
-      <div v-if="modulo.recursos_educacionais" class="flex flex-col items-center justify-center space-y-8">
-        <Title tamanho="text-2xl" cor="text-redAva" texto="Recursos educacionais"/>
-        {{ modulo.recursos_educacionais }}
+      <div v-if="modulo.recursos_educacionais" class="flex flex-col items-center justify-center space-y-10">
+        <Title tamanho="text-2xl text-justify" cor="text-redAva" texto="Recursos educacionais"/>
+        <p>{{ modulo.recursos_educacionais }}</p>
         <p>Serão utilizados textos no formato de PDF, vídeos, ilustrações, infográficos, dentre outros recursos.</p>
       </div>
-      <div class="flex flex-col items-center justify-center pt-16">
-        <Title tamanho="text-2xl" cor="text-redAva" texto="Creditos"/>
+      <div class="flex flex-col items-center justify-center pt-16 space-y-12">
+        <Title tamanho="text-2xl text-justify" cor="text-redAva" texto="Creditos"/>
         <div class="flex flex-wrap items-center justify-center">
           <div v-for="(imagem, index) in modulo.creditos" :key="index" class="pr-9">
-            <img :src="imagem.capa" :alt="imagem.titulo" :title="imagem.titulo" class="w-72" loading="lazy">
+            <img v-lazy="imagem.capa" :alt="imagem.titulo" :title="imagem.titulo" class="w-72" loading="lazy">
           </div>
         </div>
       </div>

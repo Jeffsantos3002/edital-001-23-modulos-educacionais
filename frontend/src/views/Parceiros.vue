@@ -27,7 +27,7 @@
           start="1"
           >
           <template v-slot:next>
-            <v-btn @click="next" class=" flex items-center h-full font-semibold px-3 bg-[#FAFAFA]" elevation="0">Próximo ></v-btn>
+            <v-btn @click="next" class=" text-none flex items-center h-full font-semibold px-3 bg-[#FAFAFA]" elevation="0">Próximo ></v-btn>
           </template>
         </v-pagination>
       </section>

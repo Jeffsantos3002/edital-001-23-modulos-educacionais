@@ -1,10 +1,10 @@
 <template>
-  <div class="text-center flex flex-row items-center">
+  <div class="text-center h-6 flex flex-row items-center">
     <v-rating
       v-model="localRating"
       :readonly="true"
       half-increments
-      color="#D2202C"
+      color="#F6303F"
       dense
       ></v-rating>
     <pre><p :class="props.estilo">{{ novaString }}</p></pre>

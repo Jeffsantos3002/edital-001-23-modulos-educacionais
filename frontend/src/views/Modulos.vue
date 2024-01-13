@@ -6,7 +6,7 @@
       <div class="">
       <!-- Categorias: o filtro é aplicado quando a categoria é reconhecida pelo selectedTab que está sendo chamado na função mudar categoria -->
       <!-- Após a categoria ser reconhecida seu valor é atribuido a variável 'categoria' e passada como parâmentro de requisição para API -->
-        <section class="flex flex-wrap md:flex-row w-full mt-7">
+        <section class="flex flex-wrap md:flex-row w-full mt-7 hidden md:flex">
           <div class="cursor-pointer pb-2 pr-8 min-h-9"
             @click="mudarCategoria('Covid%2019','covid')">
             <div :class="{'filter': selectedTab === 'covid'}">
@@ -43,18 +43,23 @@
               <Title tamanho="text-xl" cor="" texto="Sistemas prisional" :class="{'textFilter': selectedTab === 'prisional'}"/>
             </div>
           </div>
-          <div class="cursor-pointer pb-2 pr-8 min-h-9"
+          <div class="cursor-pointer pb-2 min-h-9"
             @click="mudarCategoria('OPAS','opas')">
             <div :class="{'filter': selectedTab === 'opas'}">
               <Title tamanho="text-xl" cor="" texto="OPAS" :class="{'textFilter': selectedTab === 'opas'}"/>
             </div>
           </div>
         </section>
+        <section class="md:hidden  mt-7 ">
+          <div class="w-96">
+            <InputCategoria :initialCategoriaOptions="filtros" @categoria="atualizarCategoria" />
+          </div>
+        </section>
         <div>
           <p class="italic pt-7">{{ paginatedItems.length }} de {{ items.length }} resultados</p>
         </div>
         <section class="flex flex-col">
-          <div v-if="items" class="flex flex-wrap min-h-[1106px]">
+          <div v-if="items" class="flex flex-wrap min-h-[1106px] justify-center">
             <div class="flex flex-col sm:w-[350px] my-7 sm:mr-8" v-for="(modulo, index) in paginatedItems" :key="index">
               <img v-lazy="modulo.capa"  alt="Descrição da imagem" class="h-52 w-full object-cover rounded-card" loading="lazy"
               />
@@ -63,20 +68,20 @@
               <div class="flex flex-wrap">
                 <div class="flex flex-row space-x-5">
                   <div class="flex flex-row items-center space-x-2">
-                    <img src="../assets/alunos-icon.svg" alt="alunos-icon" title="alunos">
-                    <p class="text-base">{{numberReal(modulo.matriculados)}}</p>
+                    <img src="../assets/alunos-icon.svg" alt="alunos-icon" title="alunos" class="w-6 h-5">
+                    <p class="text-xs">{{numberReal(modulo.matriculados)}}</p>
                   </div>
                   <div class="flex flex-row items-center space-x-2 pr-5">
-                    <img src="../assets/hora-icon.svg" alt="hora-icon" title="hora">
-                    <p class="text-base">4h</p>
+                    <img src="../assets/hora-icon.svg" alt="hora-icon" title="hora" class="w-6 h-5">
+                    <p class="text-xs">4h</p>
                   </div>
                 </div>
-                <Avalia :rating="modulo.avaliacao" estilo="text-base"/>
+                <Avalia :rating="modulo.avaliacao" estilo="text-xs"/>
               </div>
               <div>
                 <p class="text-sm sm:h-24">{{ limitText(modulo.resumo, 193) }} </p>
                 <div class="w-full flex justify-end">
-                  <a href="#" class="text-lg text-gray font-semibold">Ver curso</a>
+                  <a href="#" class="text-lg text-gray font-semibold"  @click="redirecionarParaDetalhes(modulo.id, modulo.titulo)">Ver curso</a>
                 </div>
               </div>
             </div>
@@ -94,7 +99,7 @@
               start="1"
               >
               <template v-slot:next>
-                <v-btn @click="next" class=" flex items-center h-full font-semibold px-3 bg-[#FAFAFA]" elevation="0">Próximo ></v-btn>
+                <v-btn @click="next" class=" text-none flex items-center h-full font-semibold px-3 bg-[#FAFAFA]" elevation="0">Próximo ></v-btn>
               </template>
             </v-pagination>
           </div>
@@ -106,11 +111,14 @@
 
 <script setup>
 import { ref, watchEffect, onMounted, computed } from 'vue'
+import { useRouter } from 'vue-router'
 import axios from 'axios'
 import Breadcrumb from '@/components/Breadcrumb.vue'
 import Title from '@/components/Title.vue'
 import Avalia from '@/components/Home/Cursos/Avalia.vue'
+import InputCategoria from '@/components/InputCategoria.vue'
 
+const router = useRouter()
 const categoria = ref('Covid%2019') // faz requisição de modulos do db inicial, depois fica dinâmico
 const selectedTab = ref('covid') // aciona o sublinhado assim que a página carrega
 const items = ref([])
@@ -132,7 +140,27 @@ const mudarCategoria = (novaCategoria, section) => {
   categoria.value = novaCategoria
   selectTab(section)
 }
+/* Campo input de seleção de categoria */
+const filtros = [
+  { categoria: 'Covid%2019', titulo: 'Covid' },
+  { categoria: 'Síflis e outras ist', titulo: 'Sifilis' },
+  { categoria: 'Preceptoria', titulo: 'Perceptoria' },
+  { categoria: 'Doenças raras', titulo: 'Doenças raras' },
+  { categoria: 'WebPalestras', titulo: 'Web Palestras' },
+  { categoria: 'Sistema%20prisional', titulo: 'Sistema Prisional' },
+  { categoria: 'OPAS', titulo: 'OPAS' }
+]
 
+const atualizarCategoria = (event) => {
+  console.log('event' + event)
+  categoria.value = event
+  debugger
+}
+/* -------------------------------------- */
+const redirecionarParaDetalhes = (moduloId, moduloTitulo) => {
+  console.log('id: ' + moduloId, 'titulo: ' + moduloTitulo)
+  router.push({ name: 'moduloDetalhes', params: { id: moduloId, titulo: moduloTitulo } }) // redirenciona para single-page moduloDetalhes
+}
 async function carregarCursos () {
   try {
     const apiUrl = `http://127.0.0.1:3004/cursos?cateroria=${categoria.value}` // adicona a categoria na requisição depois de ter clicado em um dos texto

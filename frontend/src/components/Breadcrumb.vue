@@ -2,7 +2,7 @@
   <!-- Quando estiver na rota moduloDetlhe a estilização é aplicada -->
   <v-breadcrumbs :items="dynamicItems" class="pt-8 flex flex-wrap" :class="{ 'breadcrumb-det-modulo': isDetalheModulo }" >
     <template v-slot:title="{ item }">
-        {{ item.title }}
+        {{item.title}}
     </template>
   </v-breadcrumbs>
 </template>
@@ -18,13 +18,14 @@ const isDetalheModulo = rota.name === 'moduloDetalhes' // retorna um boleano inf
 const updateBreadcrumb = () => {
   const route = useRoute()
   const breadcrumbItems = []
-
-  switch (route.name) {
+  const rota = route.name
+  console.log(rota)
+  switch (rota) {
     case 'moduloDetalhes':
       breadcrumbItems.push(
         { title: 'Inicio', disabled: false, href: '/' },
         { title: 'Cursos', disabled: false, href: '/cursos' },
-        { title: 'Módulos', disabled: false, href: '/' },
+        { title: 'Módulos', disabled: false, href: '/modulos' },
         { title: route.params.titulo }
       )
       break
@@ -101,7 +102,7 @@ watchEffect(() => {
 }
 /* Estiliza componente padrão vuetify para quando estiver ativo e estiver desabilitado */
 .v-breadcrumbs{
- padding: 0px;
+ padding: 0px !important;
 }
 .v-breadcrumbs-item {
   opacity: 1 !important;
