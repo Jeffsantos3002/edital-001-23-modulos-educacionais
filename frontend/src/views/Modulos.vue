@@ -59,8 +59,8 @@
           <p class="italic pt-7">{{ paginatedItems.length }} de {{ items.length }} resultados</p>
         </div>
         <section class="flex flex-col">
-          <div v-if="items" class="flex flex-wrap min-h-[1106px] justify-center">
-            <div class="flex flex-col sm:w-[350px] my-7 sm:mr-8" v-for="(modulo, index) in paginatedItems" :key="index">
+          <div v-if="items" class="flex flex-wrap min-h-[934px] justify-center">
+            <div class="flex flex-col sm:w-[350px] h-[452px] my-7 sm:mr-8" v-for="(modulo, index) in paginatedItems" :key="index">
               <img v-lazy="modulo.capa"  alt="Descrição da imagem" class="h-52 w-full object-cover rounded-card" loading="lazy"
               />
               <Title tamanho="text-xl" cor="text-black" :texto="limitText(modulo.titulo, 45 )" class="h-14 flex items-center"/>
