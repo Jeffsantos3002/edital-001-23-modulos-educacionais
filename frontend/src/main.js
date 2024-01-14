@@ -34,6 +34,6 @@ const vuetify = createVuetify({
 createApp(App).use(vuetify).use(VueLazyload, {
   preLoad: 1.3,
   error: 'loadding',
-  loading: require('@/assets/calendario-icon.svg'),
+  loading: require('@/assets/default-placeholder.png'),
   attempt: 1
 }).use(router).mount('#app')
