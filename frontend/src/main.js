@@ -2,7 +2,6 @@ import { createApp } from 'vue'
 import App from './App.vue'
 import router from './router'
 import VueLazyload from 'vue-lazyload'
-import { MapsPlugin } from '@syncfusion/ej2-vue-maps'
 import './styles/main.css'
 
 // Vuetify
@@ -37,4 +36,4 @@ createApp(App).use(vuetify).use(VueLazyload, {
   error: 'loadding',
   loading: require('@/assets/calendario-icon.svg'),
   attempt: 1
-}).use(router).use(MapsPlugin).mount('#app')
+}).use(router).mount('#app')

@@ -86,7 +86,7 @@ onMounted(async () => {
   const apiUrl = `http://127.0.0.1:3004/cursos/${moduleId}` // faz a requisição com base no id passado nos paramentros da rota
   const response = await axios.get(apiUrl)
   modulo.value = response.data
-  objEspecifico.value = response.data.objetivo_especifico ? response.data.objetivo_especifico.split('-') : ''
+  objEspecifico.value = response.data.objetivo_especifico ? response.data.objetivo_especifico.split('-') : '' // formata texto removendo '-'
   especificoFilt.value = objEspecifico.value ? objEspecifico.value.filter(obj => obj !== '') : ''
   console.log(response.data.recursos_educacionais)
 })
