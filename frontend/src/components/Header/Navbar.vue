@@ -12,15 +12,26 @@
       </div>
     </div>
     <div class="flex flex-row space-x-4 items-center justify-end">
-      <div class="w-64 2xl:w-353 h-10 flex space-x-2.5 items-center rounded-card border-2 border-solid border-opacity-20 border-gray py-2.5 px-5">
-        <v-icon class="search-icon ">mdi-magnify</v-icon>
-        <input
-          type="search"
-          v-model="search"
-          class="form-control w-full placeholder-placeholderColor focus:outline-none"
+      <v-card
+        class="mx-auto pa-2 d-flex align-center justify-center"
+        elevation="0"
+        max-width="353"
+        height="40"
+        rounded="lg"
+      >
+        <v-text-field
+          class="mx-auto"
+          dense
           placeholder="Busca por um assunto..."
-        />
-      </div>
+          prepend-inner-icon="mdi-magnify"
+          variant="outlined"
+          rounded
+          solo-inverted
+          size="x-large"
+          style="height: 40px; text-align: center;"
+        ></v-text-field>
+      </v-card>
+
       <div class="space-x-4 flex justify-end hidden xl:flex">
         <v-btn class="rounded-card text-xl normal-case border border-solid border-gray-950 px-5">
           Entrar
@@ -32,8 +43,21 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
 import buttonAva from '../buttonAva.vue'
 
-const search = ref('')
 </script>
+
+<style>
+.v-input__control .v-field__field {
+  height: 40px !important;
+  min-height: none !important;
+}
+.v-field__input{
+  padding: 0px !important;
+  min-height: 0 !important;
+}
+.v-field__field {
+  display: flex !important;
+  align-items: center !important;
+}
+</style>

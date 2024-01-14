@@ -21,7 +21,7 @@
           :length="totalPages"
           :total-visible="5"
           :prev-icon="null"
-          :on-next="proximo"
+          :on-next="next"
           size="40px"
           class="custom-pagination"
           start="1"
@@ -49,16 +49,13 @@ const currentPage = ref(1) // Página atual
 
 const next = () => {
   const current = currentPage.value
-  console.log('Next' + current)
   const pages = Math.ceil(items.value.length / itemsPerPage.value)
   currentPage.value = current < pages ? current + 1 : current
-  console.log('Next' + currentPage.value)
 }
 
 const paginatedItems = computed(() => {
   const startIndex = (currentPage.value - 1) * itemsPerPage.value
   const endIndex = startIndex + itemsPerPage.value
-  console.log('startIndex:', startIndex, 'endIndex:', endIndex)
   return items.value.slice(startIndex, endIndex)
 })
 
@@ -77,8 +74,6 @@ async function carregarParceiros () {
     const response = await axios.get(apiUrl)
     if (response.data) {
       items.value = response.data
-      console.log('items: ' + items.value)
-      console.log('response: ' + response.data)
     }
   } catch (error) {
     console.error('Erro ao carregar cursos:', error)

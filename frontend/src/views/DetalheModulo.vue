@@ -88,7 +88,6 @@ onMounted(async () => {
   modulo.value = response.data
   objEspecifico.value = response.data.objetivo_especifico ? response.data.objetivo_especifico.split('-') : '' // formata texto removendo '-'
   especificoFilt.value = objEspecifico.value ? objEspecifico.value.filter(obj => obj !== '') : ''
-  console.log(response.data.recursos_educacionais)
 })
 
 </script>

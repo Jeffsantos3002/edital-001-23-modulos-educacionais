@@ -163,12 +163,10 @@ const redirecionarParaDetalhes = (moduloId, moduloTitulo) => {
 }
 async function carregarCursos () {
   try {
-    const apiUrl = `http://127.0.0.1:3004/cursos?cateroria=${categoria.value}` // adicona a categoria na requisição depois de ter clicado em um dos texto
+    const apiUrl = `http://127.0.0.1:3004/cursos?cateroria=${categoria.value}&_sort=criado_em&_order=desc` // adicona a categoria na requisição depois de ter clicado em um dos texto
     const response = await axios.get(apiUrl)
     if (response.data) {
       items.value = response.data
-      console.log('items: ' + items.value)
-      console.log('response: ' + response.data)
     }
   } catch (error) {
     console.error('Erro ao carregar cursos:', error)
@@ -186,7 +184,6 @@ const limitText = (text, limite) => {
 const paginatedItems = computed(() => {
   const startIndex = ((currentPage.value - 1) * itemsPerPage.value) > totalPages.value ? (currentPage.value - 1) * itemsPerPage.value : 0
   const endIndex = startIndex + itemsPerPage.value
-  console.log('startIndex:', startIndex, 'endIndex:', endIndex)
   return items.value.slice(startIndex, endIndex)
 })
 

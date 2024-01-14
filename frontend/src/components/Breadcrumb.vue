@@ -19,7 +19,6 @@ const updateBreadcrumb = () => {
   const route = useRoute()
   const breadcrumbItems = []
   const rota = route.name
-  console.log(rota)
   switch (rota) {
     case 'moduloDetalhes':
       breadcrumbItems.push(

@@ -23,8 +23,8 @@
         </div>
       </div>
     </Card>
-    <Card class="lg:w-1/2 lg:px-20 px-2 pt-6 max-w-[519px] w-full min-h-[596px] flex flex-col items-center" elevation="1">
-      <Title tamanho="text-2xl font-semibold text-center" cor="text-[#F6303F]" texto="Usuários por curso" class="w-full mb-20"/>
+    <Card class="lg:w-1/2 lg:px-20 px-2 pt-6 max-w-[519px] w-full min-h-[568px] flex flex-col items-center" elevation="1">
+      <Title tamanho="text-2xl font-semibold text-center" cor="text-[#F6303F]" texto="Usuários por Estado" class="w-full mb-20"/>
       <GChart :data="chartData" :options="chartOptions" :type="type" :settings="{ packages: ['geochart'] }" class="w-full h-full"/>
     </Card>
   </div>

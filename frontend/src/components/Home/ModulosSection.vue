@@ -1,6 +1,6 @@
 <template>
     <div class="flex flex-col space-y-8 items-center justify-start px-10">
-      <Title tamanho="text-3xl" cor="text-redAva" texto="Módulos Educacionais"/>
+      <Title tamanho="text-3xl text-center" cor="text-redAva" texto="Módulos Educacionais"/>
       <div class="pl-2 flex flex-col md:flex-row md:space-x-8 w-full hidden md:flex">
         <div class="mb-8 cursor-pointer pb-2"
           :class="{'filter': selectedTab === 'populares'}"
@@ -25,10 +25,10 @@
       </div>
       <div class="space-y-16 flex flex-col items-center px-2">
         <div class="space-y-8">
-          <Card v-for="modulo in responsed" :key="modulo.id">
-            <div class="px-5 flex flex-col md:flex-row items-center md:space-x-5 py-5">
+          <Card v-for="modulo in responsed" :key="modulo.id" class="w-full">
+            <div class="w-full md:px-5 flex flex-col md:flex-row items-center md:space-x-5 md:py-5">
               <div class="flex flex-col md:flex-row items-center justify-center space-y-2 md:space-y-0 space-x-5 ">
-                <img v-lazy="modulo.capa" :alt="modulo.titulo" :title="modulo.titulo" class="w-96 md:w-32 md:h-32 rounded-card" loading="lazy">
+                <img v-lazy="modulo.capa" :alt="modulo.titulo" :title="modulo.titulo" class="w-96 md:w-32 md:h-32 md:rounded-card" loading="lazy">
                 <div class="flex flex-col w-[274px] space-y-4">
                   <Title tamanho="text-xl" cor="text-black" :texto="modulo.titulo"/>
                   <p class="text-xs text-redAva text-[#F6303F] font-semibold">{{ modulo.parceiros }}</p>
@@ -100,7 +100,6 @@ async function carregarCursos () {
   try {
     const apiUrl = `http://127.0.0.1:3004/cursos?cateroriacateroria=Módulo de extensão${categoria.value}` // adicona a categoria na requisição depois de ter clicado em um dos texto
     const response = await axios.get(apiUrl)
-    console.log(apiUrl)
     if (response.data) {
       responsed.value = response.data
     }
