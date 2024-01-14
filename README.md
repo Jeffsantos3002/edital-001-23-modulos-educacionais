@@ -1,3 +1,15 @@
+### Para executar o front, primeiramente execute a API conforme as instruções do edital. Posteriormente navegue até o diretório frontend e execute o comando abaixo:
+
+## Instalação das Dependências
+```
+pnpm install
+```
+
+### Execução do front
+
+```
+pnpm run serve
+```
 # API de Exemplo
 
 Para facilitar o desenvolvimento do projeto, criamos uma API de exemplo que deve ser utilizada para o consumo e a persistência de dados.
